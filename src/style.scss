@@ -1,0 +1,9 @@
+$aqua : aqua;
+$green : green;
+$yellow : yellow;
+.env{
+    background-color: $aqua;
+    span{
+        background-color:  $yellow;
+    }
+}
