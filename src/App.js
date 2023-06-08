@@ -1,15 +1,30 @@
-import { createElement, Fragment, useState } from "react";
+import { createElement, forwardRef, Fragment, useRef, useState } from "react";
 import Button from "./components/button.js";
 import Tab from "./components/tab.js";
+import Test from "./test.js";
+
+//Styles
 //import "./style.scss";
-import "./tailwind.css";
+//import "./tailwind.css";
 
 //
-const Profile = () => {
-  console.log("profil tabın geldiniz");
-  return <div>Burası profil tabı</div>;
-};
+//const Profile = () => {
+//console.log("profil tabın geldiniz");
+//return <div>Burası profil tabı</div>;
+//};
+
 function App() {
+  //State LifeCyle
+  /*
+  const [show, setShow] = useState(false);
+  return (
+    <>
+      <button onClick={() => setShow((show) => !show)}>
+        {show ? "Gizle" : "Göster"}
+      </button>
+      {show && <Test />}
+    </>
+  );*/
   //jsx kullanmadan eleman create etmek
   /*
   const todos = ["todo1", "todo2", "todo3"];
@@ -29,7 +44,7 @@ function App() {
     ul
   );
   */
-  const name = "Tayfun";
+  /* const name = "Tayfun";
   const todos = ["todo1", "todo2", "todo3"];
   const style = { color: "red", backgroundColor: "yellowgreen" };
   const [activeTab, setActiveTab] = useState(1);
@@ -74,7 +89,7 @@ function App() {
         ))}
       </ul>
     </Fragment>
-  );
+  );*/
 }
 
 export default App;
