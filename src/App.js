@@ -1,4 +1,12 @@
-import { createElement, forwardRef, Fragment, useRef, useState } from "react";
+import {
+  createElement,
+  forwardRef,
+  Fragment,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
+import todoReducer from "./reducers/todoReducer";
 import Button from "./components/button.js";
 import Tab from "./components/tab.js";
 import Test from "./test.js";
@@ -14,6 +22,74 @@ import Test from "./test.js";
 //};
 
 function App() {
+  //Reducer kullanarak to do App
+  const [state, dispatch] = useReducer(todoReducer, {
+    todos: [],
+    todo: "",
+  });
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "ADD_TODO",
+      todo: state.todo,
+    });
+    //  setTodos([...todos, todo]);
+    // setTodo("");
+  };
+  const onChange = (e) => {
+    dispatch({
+      type: "SET_TODO",
+      value: e.target.value,
+    });
+  };
+  return (
+    <>
+      <h1>Todo App()</h1>
+      <form onSubmit={submitHandle}>
+        <input type="text" value={state.todo} onChange={onChange} />
+        <button disabled={!state.todo} type="submit">
+          Ekle
+        </button>
+      </form>
+      <ul>
+        {state.todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </>
+  );
+
+  //Reducer kullanmadan To do App
+  /* const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState();
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    setTodos([...todos, todo]);
+    setTodo("");
+  };
+  return (
+    <>
+      <h1>Todo App()</h1>
+      <form onSubmit={submitHandle}>
+        <input
+          type="text"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+        />
+        <button disabled={!todo} type="submit">
+          Ekle
+        </button>
+      </form>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </>
+  );*/
+
   //State LifeCyle
   /*
   const [show, setShow] = useState(false);
